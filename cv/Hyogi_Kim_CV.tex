@@ -1,0 +1,61 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=18mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{xcolor}
+\definecolor{accent}{HTML}{254F43}
+\usepackage[colorlinks=true,urlcolor=accent]{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\titleformat{\section}{\large\color{accent}}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{13pt}{6pt}
+\setlist[itemize]{leftmargin=14pt,itemsep=2pt,topsep=3pt,parsep=0pt}
+\begin{document}
+{\Huge Hyogi Kim}\hfill {\small Updated November 2026}\\[5pt]
+UNIST $\cdot$ Computer Science and Engineering\\
+\href{mailto:jeff4380@unist.ac.kr}{jeff4380@unist.ac.kr} $\cdot$ \href{https://github.com/HYO-AI-UNIST}{GitHub} $\cdot$ \href{https://hyo-ai-unist.github.io}{hyo-ai-unist.github.io}
+\section{Research interests}
+AI memory $\cdot$ Continual learning $\cdot$ Robot learning\\
+I study computer science at UNIST. My interests lie in AI memory, continual learning, and abstraction: how an agent can preserve useful experience and draw on it when learning something new.
+\section{Education}
+\textbf{UNIST}\\
+Computer Science and Engineering
+\section{Selected research \& project experience}
+\textbf{Continual learning for VLA}\hfill {\small Ongoing research}\\
+{\small Research participant; research questions and method exploration.}
+\begin{itemize}
+\item Participating in research on sequential VLA learning using LIBERO and SO-101.
+\item Exploring experience reuse, capability retention, and the storage and training costs of replay.
+\end{itemize}
+\vspace{3pt}
+\textbf{Maestro / MobileKT}\hfill {\small Project}\\
+{\small Team lead $\cdot$ MobileKT model architecture $\cdot$ on-device deployment.}
+\begin{itemize}
+\item Team lead; responsible for MobileKT model architecture and on-device deployment.
+\item Team implementation: 1.48 MB of bundled ONNX models; median knowledge-tracing step latency of 49 ms over 63 steps on a Galaxy Tab S8.
+\end{itemize}
+\vspace{3pt}
+\textbf{Edge AI video processing}\hfill {\small Engineering project}\\
+{\small Model and inference-pipeline development.}
+\begin{itemize}
+\item Developed object-detection and video-processing components for RK3588 and DEEPX DX-M1.
+\item Worked with C++ asynchronous inference, model conversion, preprocessing, postprocessing, and video input/output.
+\end{itemize}
+\vspace{3pt}
+\textbf{Nano-MemGPT}\hfill {\small In development}\\
+{\small Research proposal and experimental scaffold.}
+\begin{itemize}
+\item Proposed diagnosis of small-model memory-management failures using oracle function calls and failure categories.
+\item Developing an experimental scaffold for teacher trajectories and full fine-tuning / LoRA comparisons.
+\end{itemize}
+\vspace{3pt}
+\section{Technical experience}
+\textbf{Model development:} Python $\cdot$ PyTorch $\cdot$ model training and evaluation\\
+\textbf{Deployment \& systems:} C++ $\cdot$ ONNX $\cdot$ Linux $\cdot$ asynchronous inference pipelines\\
+\textbf{Research environments:} LIBERO $\cdot$ SO-101 $\cdot$ mobile and edge devices\\
+\end{document}

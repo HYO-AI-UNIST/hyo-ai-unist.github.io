@@ -1,0 +1,72 @@
+[
+  {
+    "id": "vla-continual-learning",
+    "title": "Continual learning for VLA",
+    "subtitle": "Retaining capabilities while learning new robotic tasks.",
+    "status": "Ongoing research",
+    "area": "Robot learning",
+    "tags": ["Continual learning", "LIBERO", "SO-101"],
+    "summary": "Exploring how vision–language–action models can learn sequential manipulation tasks while retaining earlier capabilities, with an interest in experience replay and its storage and training costs.",
+    "role": "Research participant; research questions and method exploration.",
+    "question": "Which parts of past experience should a robot reuse when learning a new task?",
+    "sections": [
+      {"title": "Research context", "text": "The project considers continual robot learning with the LIBERO simulation environment and the SO-101 robot. Areas of investigation include differences between larger foundation models and lightweight policies, retention of earlier tasks, and the resource costs of replay."},
+      {"title": "My focus", "text": "I am interested in the relationship between preserving past capabilities and the cost of retaining and revisiting experience. I have also been exploring shared representations with task-specific composition and selective capacity expansion as research hypotheses."},
+      {"title": "Questions under investigation", "items": ["How does experience selection affect learning and retention under a fixed budget?", "When can an existing representation be reused for a new task?", "How should task success, forgetting, storage, and additional parameters be evaluated together?"]}
+    ],
+    "cv": ["Participating in research on sequential VLA learning using LIBERO and SO-101.", "Exploring experience reuse, capability retention, and the storage and training costs of replay."]
+  },
+  {
+    "id": "maestro",
+    "title": "Maestro / MobileKT",
+    "subtitle": "Personalized knowledge tracing on mobile devices.",
+    "status": "Project",
+    "area": "Personalized learning",
+    "tags": ["Knowledge tracing", "Model design", "On-device AI"],
+    "summary": "A team project combining personalized study support with interpretable on-device knowledge tracing. I led the team and worked on the MobileKT model architecture and on-device deployment.",
+    "role": "Team lead · MobileKT model architecture · on-device deployment.",
+    "question": "How can a compact model represent a learner’s changing knowledge state?",
+    "sections": [
+      {"title": "The project", "text": "Maestro combines quiz generation and knowledge tracing in a mobile study assistant. MobileKT builds on MIKT and uses a content-based question representation and a Time-Aware Probe to estimate concept mastery. The system combines server-side components with on-device knowledge-state updates."},
+      {"title": "My contribution", "text": "I served as team lead and contributed to the MobileKT architecture and on-device deployment. This connected model design with the practical constraints of integrating a knowledge-tracing component into a mobile application."},
+      {"title": "Reported implementation results", "text": "The team’s final report records a total size of 1.48 MB for the bundled on-device ONNX models. Across 63 measured steps on a Galaxy Tab S8, the median knowledge-tracing step latency was 49 ms. These figures describe the on-device knowledge-tracing components, not the entire app or server-assisted response time."},
+      {"title": "What I take forward", "text": "This project informs my interest in persistent state representations, personalization, and the trade-offs between predictive performance, interpretability, and deployment cost. Knowledge-state updates here are distinct from continual updates to model weights."}
+    ],
+    "cv": ["Team lead; responsible for MobileKT model architecture and on-device deployment.", "Team implementation: 1.48 MB of bundled ONNX models; median knowledge-tracing step latency of 49 ms over 63 steps on a Galaxy Tab S8."]
+  },
+  {
+    "id": "edge-ai",
+    "title": "Edge AI video processing",
+    "subtitle": "Connecting models to real-time execution constraints.",
+    "status": "Engineering project",
+    "area": "AI systems",
+    "tags": ["C++", "ONNX", "RK3588 / DX-M1"],
+    "summary": "Model training, conversion, and C++ inference pipelines for object detection and video processing on RK3588 with a DEEPX DX-M1 accelerator.",
+    "role": "Model and inference-pipeline development.",
+    "question": "What changes when a vision model has to run in a real system?",
+    "sections": [
+      {"title": "The system", "text": "The work connects RTSP video input, image preprocessing, accelerator inference, detection postprocessing, and video recording. The target environment combines an RK3588 single-board computer with the DEEPX DX-M1 accelerator."},
+      {"title": "My contribution", "text": "I worked on object-detection training and conversion, C++ inference integration, preprocessing and postprocessing, asynchronous execution, and buffer management. Debugging involved checking model input and output formats as well as the behavior of the surrounding pipeline."},
+      {"title": "Research relevance", "text": "This experience made latency, memory use, and data movement concrete considerations in my work. It informs how I approach the gap between a model’s offline evaluation and its behavior in a deployed system."}
+    ],
+    "cv": ["Developed object-detection and video-processing components for RK3588 and DEEPX DX-M1.", "Worked with C++ asynchronous inference, model conversion, preprocessing, postprocessing, and video input/output."]
+  },
+  {
+    "id": "nano-memgpt",
+    "title": "Nano-MemGPT",
+    "subtitle": "Understanding memory-management failures in small language models.",
+    "status": "In development",
+    "area": "Agent memory",
+    "tags": ["Memory systems", "Tool use", "Distillation"],
+    "summary": "A research proposal and code scaffold for diagnosing memory-related function-calling failures in small language models and investigating teacher-guided recovery.",
+    "role": "Research proposal and experimental scaffold.",
+    "question": "Does an agent fail because it lacks knowledge, or because it does not retrieve the right memory?",
+    "code": "https://github.com/HYO-AI-UNIST/Nano-MemGPT",
+    "sections": [
+      {"title": "The question", "text": "This work proposes separating answer-generation errors from failures in memory management, such as missing a retrieval call, making an unnecessary call, or stopping a chain of calls too early."},
+      {"title": "Experimental direction", "text": "The repository provides a scaffold for running Letta/MemGPT baselines, collecting teacher trajectories, diagnosing function-call behavior, and comparing full fine-tuning with LoRA. The intended evaluations include multi-session retrieval and document question answering."},
+      {"title": "Current scope", "text": "This is a research project in development. The page describes the proposal and experimental setup; it does not claim completed distillation results or verified gains."}
+    ],
+    "cv": ["Proposed diagnosis of small-model memory-management failures using oracle function calls and failure categories.", "Developing an experimental scaffold for teacher trajectories and full fine-tuning / LoRA comparisons."]
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "name": "Hyogi Kim",
+  "name_ko": "김효기",
+  "affiliation": "UNIST",
+  "field": "Computer Science and Engineering",
+  "email": "jeff4380@unist.ac.kr",
+  "github": "https://github.com/HYO-AI-UNIST",
+  "url": "https://hyo-ai-unist.github.io",
+  "updated": "2026-11-13",
+  "headline": "How can AI remember, adapt, and reuse what it learns?",
+  "bio": "I study computer science at UNIST. My interests lie in AI memory, continual learning, and abstraction: how an agent can preserve useful experience and draw on it when learning something new.",
+  "focus": "I am currently exploring these questions through continual learning for vision–language–action models. My project experience also includes personalized knowledge tracing and deploying AI systems on resource-constrained devices.",
+  "interests": ["AI memory", "Continual learning", "Robot learning"],
+  "skills": [
+    {"label": "Model development", "text": "Python · PyTorch · model training and evaluation"},
+    {"label": "Deployment & systems", "text": "C++ · ONNX · Linux · asynchronous inference pipelines"},
+    {"label": "Research environments", "text": "LIBERO · SO-101 · mobile and edge devices"}
+  ]
+}
