@@ -23,16 +23,16 @@
     "status": "Project",
     "area": "Personalized learning",
     "tags": ["Knowledge tracing", "Model design", "On-device AI"],
-    "summary": "A team project combining personalized study support with interpretable on-device knowledge tracing. I led the team and worked on the MobileKT model architecture and on-device deployment.",
-    "role": "Team lead · MobileKT model architecture · on-device deployment.",
+    "summary": "A team project combining personalized study support with interpretable on-device knowledge tracing. I led the team, contributed to the MobileKT methodology, and provided the Android test environment.",
+    "role": "Team lead · MobileKT methodology and evaluation support.",
     "question": "How can a compact model represent a learner’s changing knowledge state?",
     "sections": [
       {"title": "The project", "text": "Maestro combines quiz generation and knowledge tracing in a mobile study assistant. MobileKT builds on MIKT and uses a content-based question representation and a Time-Aware Probe to estimate concept mastery. The system combines server-side components with on-device knowledge-state updates."},
-      {"title": "My contribution", "text": "I served as team lead and contributed to the MobileKT architecture and on-device deployment. This connected model design with the practical constraints of integrating a knowledge-tracing component into a mobile application."},
+      {"title": "My contribution", "text": "I served as team lead and contributed to the MobileKT methodology. I supported the evaluation by providing the Android test environment."},
       {"title": "Reported implementation results", "text": "The team’s final report records a total size of 1.48 MB for the bundled on-device ONNX models. Across 63 measured steps on a Galaxy Tab S8, the median knowledge-tracing step latency was 49 ms. These figures describe the on-device knowledge-tracing components, not the entire app or server-assisted response time."},
       {"title": "What I take forward", "text": "This project informs my interest in persistent state representations, personalization, and the trade-offs between predictive performance, interpretability, and deployment cost. Knowledge-state updates here are distinct from continual updates to model weights."}
     ],
-    "cv": ["Team lead; responsible for MobileKT model architecture and on-device deployment.", "Team implementation: 1.48 MB of bundled ONNX models; median knowledge-tracing step latency of 49 ms over 63 steps on a Galaxy Tab S8."]
+    "cv": ["Team lead; contributed to MobileKT methodology and provided the Android test environment.", "Team implementation: 1.48 MB of bundled ONNX models; median knowledge-tracing step latency of 49 ms over 63 steps on a Galaxy Tab S8."]
   },
   {
     "id": "edge-ai",
