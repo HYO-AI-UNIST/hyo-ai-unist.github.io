@@ -6,24 +6,25 @@ A lightweight research homepage with project details, a web CV, and a downloadab
 
 ## 내용 수정하기
 
-프로필과 프로젝트는 아래 두 파일에서 관리합니다. 홈페이지와 웹 CV는 같은 원본을 사용합니다.
+프로필, 프로젝트, CV의 상세 내용은 아래 파일에서 관리합니다.
 
 | 수정할 내용 | 파일 |
 |---|---|
 | 소개, 관심사, 소속, 이메일, 기술, 갱신 날짜 | `content/profile.json` |
-| 프로젝트 추가·수정, 역할, 설명, 링크, CV 항목 | `content/projects.json` |
+| 프로젝트 추가·수정, 역할, 설명, 링크 | `content/projects.json` |
+| 웹 CV 내용 및 LaTeX 원본 | `content/cv.json` |
 | 색상, 글자 크기, 여백, 모바일 레이아웃 | `assets/site.css` |
 
 ### 수정하고 배포하기
 
-1. 두 JSON 파일에서 내용을 수정합니다. 프로젝트 `id`에는 영문 소문자·숫자·하이픈을 사용합니다.
+1. 해당 JSON 파일에서 내용을 수정합니다. 프로젝트 `id`에는 영문 소문자·숫자·하이픈을 사용합니다.
 2. 아래 명령으로 웹페이지를 다시 생성합니다. Node.js 외에 설치할 패키지는 없습니다.
 
 ```bash
 node scripts/build.mjs
 ```
 
-3. PDF 내용도 바뀌었다면 LaTeX가 설치된 환경에서 다시 생성합니다.
+3. PDF 내용도 바뀌었다면 검토한 공개용 PDF를 `assets/Hyogi_Kim_CV.pdf`에 넣습니다. LaTeX 원본으로 새 PDF를 만드는 경우에는 아래 명령을 사용합니다.
 
 ```bash
 mkdir -p .build
@@ -43,7 +44,7 @@ GitHub 웹 편집기에서 JSON만 고치면 생성된 HTML에는 자동 반영�
 
 ### 새 프로젝트 추가
 
-`content/projects.json`의 항목 하나를 복사하고 `id`, `title`, `status`, `summary`, `role`, `sections`, `cv`를 수정한 다음 빌드하세요. `code`는 공개 저장소 URL이 있을 때만 추가합니다. 배열의 순서가 홈페이지와 CV의 표시 순서입니다.
+`content/projects.json`의 항목 하나를 복사하고 `id`, `title`, `status`, `summary`, `role`, `sections`, `cv`를 수정한 다음 빌드하세요. `code`는 공개 저장소 URL이 있을 때만 추가합니다. 배열의 순서가 홈페이지의 표시 순서입니다. CV에는 `content/cv.json`에서 해당 프로젝트를 추가합니다.
 
 ### 로컬 미리보기
 
@@ -63,6 +64,6 @@ Settings → Pages → **Deploy from a branch** → `main` / `/(root)`.
 
 - Distinguish ongoing research, proposals, and completed project results.
 - Keep personal contributions separate from team-level results.
-- Education dates, degree details, GPA, and awards are omitted until confirmed.
+- Include only confirmed academic and honors information.
 - Maestro measurements refer to its bundled on-device ONNX models and knowledge-tracing step, not the entire application.
 - This repository contains public profile information only; source reports and application materials are not included.

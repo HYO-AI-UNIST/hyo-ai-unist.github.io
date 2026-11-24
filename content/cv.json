@@ -1,0 +1,61 @@
+{
+  "updated": "2026-11-24",
+  "institution": "Ulsan National Institute of Science and Technology (UNIST)",
+  "location": "Ulsan, South Korea",
+  "education": "Undergraduate in Computer Science and Engineering",
+  "interests": "Long-term memory in AI agents, continual learning, and skill reuse in robot learning.",
+  "projects": [
+    {
+      "title": "Nano-MemGPT | Diagnosing Small-Model Memory Failures",
+      "date": "2026",
+      "role": "Independent research",
+      "report": "https://github.com/HYO-AI-UNIST/Nano-MemGPT/blob/602729559ca1d2c6183f50614db791fcc6a22358/docs/latex/final_paper.pdf",
+      "cv": [
+        "Ran a 500-question memory-retrieval benchmark and used 398 judge-approved teacher traces to separate tool-call, retrieval, and answer-generation failures.",
+        "Trained rank-8 and rank-16 LoRA adapters for Llama-3-8B; compared teacher query hints with direct replay of retrieved evidence."
+      ]
+    },
+    {
+      "title": "Continual Learning for Robot Manipulation",
+      "date": "2026",
+      "role": "AICP research team, UNIST",
+      "url": "projects/vla-continual-learning.html",
+      "cv": [
+        "Gathered sequential SmolVLA baselines in LIBERO and helped design a team study of forgetting and replay in simulation and on an SO-101 robot arm.",
+        "Proposed DeMux/Mux, a parameter-reuse approach that adds capacity when existing components are insufficient."
+      ]
+    },
+    {
+      "title": "SkillCL | Compressed Replay for SmolVLA",
+      "date": "Ongoing",
+      "role": "Independent research",
+      "cv": [
+        "Prototyped replay from compressed vision-language features instead of raw observations and identified accumulating reconstruction error in preliminary sequential experiments."
+      ]
+    },
+    {
+      "title": "Maestro | Mobile Knowledge Tracing",
+      "date": "2026",
+      "role": "Team lead · Model design and Android deployment",
+      "url": "projects/maestro.html",
+      "cv": [
+        "Designed and deployed MobileKT for tracking concept mastery. The team’s Android prototype bundled 1.48 MB of ONNX models and measured a 49 ms median latency per full step on a Galaxy Tab S8."
+      ]
+    },
+    {
+      "title": "Edge AI Video Processing",
+      "date": "2025 program",
+      "role": "National NPU AX demonstration project",
+      "url": "projects/edge-ai.html",
+      "cv": [
+        "Developed a C++ RTSP video pipeline with asynchronous object detection and recording on RK3588 and DEEPX DX-M1; worked on model conversion and inference validation."
+      ]
+    }
+  ],
+  "honors": [
+    {"title": "Object Tracking Device", "detail": "KR 10-3024516, sole inventor", "date": "2026"},
+    {"title": "National Scholarship for Science and Engineering", "detail": "Korea Student Aid Foundation"},
+    {"title": "AAAI Honorable Mention (team), Intel ISEF", "date": "2019"}
+  ],
+  "skills": "Python, PyTorch, C++, ONNX Runtime, Linux · LIBERO, SO-101, vLLM/Letta, embedded NPU deployment"
+}

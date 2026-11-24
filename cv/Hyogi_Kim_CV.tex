@@ -13,49 +13,49 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{4pt}
 \titleformat{\section}{\large\color{accent}}{}{0em}{}[\titlerule]
-\titlespacing*{\section}{0pt}{13pt}{6pt}
-\setlist[itemize]{leftmargin=14pt,itemsep=2pt,topsep=3pt,parsep=0pt}
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+\setlist[itemize]{leftmargin=14pt,itemsep=1pt,topsep=2pt,parsep=0pt}
 \begin{document}
 {\Huge Hyogi Kim}\hfill {\small Updated November 2026}\\[5pt]
 UNIST $\cdot$ Computer Science and Engineering\\
 \href{mailto:jeff4380@unist.ac.kr}{jeff4380@unist.ac.kr} $\cdot$ \href{https://github.com/HYO-AI-UNIST}{GitHub} $\cdot$ \href{https://hyo-ai-unist.github.io}{hyo-ai-unist.github.io}
-\section{Research interests}
-AI memory $\cdot$ Continual learning $\cdot$ Robot learning\\
-I study computer science at UNIST. My interests lie in AI memory, continual learning, and abstraction: how an agent can preserve useful experience and draw on it when learning something new.
 \section{Education}
-\textbf{UNIST}\\
-Computer Science and Engineering
-\section{Selected research \& project experience}
-\textbf{Continual learning for VLA}\hfill {\small Ongoing research}\\
-{\small Research participant; research questions and method exploration.}
+\textbf{Ulsan National Institute of Science and Technology (UNIST)}\\
+Undergraduate in Computer Science and Engineering \hfill Ulsan, South Korea
+\section{Research interests}
+Long-term memory in AI agents, continual learning, and skill reuse in robot learning.
+\section{Selected research and projects}
+\textbf{Nano-MemGPT | Diagnosing Small-Model Memory Failures}\hfill {\small 2026}\\
+{\small Independent research $\cdot$ \href{https://github.com/HYO-AI-UNIST/Nano-MemGPT/blob/602729559ca1d2c6183f50614db791fcc6a22358/docs/latex/final_paper.pdf}{Technical report}}
 \begin{itemize}
-\item Participating in research on sequential VLA learning using LIBERO and SO-101.
-\item Exploring experience reuse, capability retention, and the storage and training costs of replay.
+\item Ran a 500-question memory-retrieval benchmark and used 398 judge-approved teacher traces to separate tool-call, retrieval, and answer-generation failures.
+\item Trained rank-8 and rank-16 LoRA adapters for Llama-3-8B; compared teacher query hints with direct replay of retrieved evidence.
 \end{itemize}
-\vspace{3pt}
-\textbf{Maestro / MobileKT}\hfill {\small Project}\\
-{\small Team lead $\cdot$ MobileKT model architecture $\cdot$ on-device deployment.}
+\textbf{Continual Learning for Robot Manipulation}\hfill {\small 2026}\\
+{\small AICP research team, UNIST}
 \begin{itemize}
-\item Team lead; responsible for MobileKT model architecture and on-device deployment.
-\item Team implementation: 1.48 MB of bundled ONNX models; median knowledge-tracing step latency of 49 ms over 63 steps on a Galaxy Tab S8.
+\item Gathered sequential SmolVLA baselines in LIBERO and helped design a team study of forgetting and replay in simulation and on an SO-101 robot arm.
+\item Proposed DeMux/Mux, a parameter-reuse approach that adds capacity when existing components are insufficient.
 \end{itemize}
-\vspace{3pt}
-\textbf{Edge AI video processing}\hfill {\small Engineering project}\\
-{\small Model and inference-pipeline development.}
+\textbf{SkillCL | Compressed Replay for SmolVLA}\hfill {\small Ongoing}\\
+{\small Independent research}
 \begin{itemize}
-\item Developed object-detection and video-processing components for RK3588 and DEEPX DX-M1.
-\item Worked with C++ asynchronous inference, model conversion, preprocessing, postprocessing, and video input/output.
+\item Prototyped replay from compressed vision-language features instead of raw observations and identified accumulating reconstruction error in preliminary sequential experiments.
 \end{itemize}
-\vspace{3pt}
-\textbf{Nano-MemGPT}\hfill {\small In development}\\
-{\small Research proposal and experimental scaffold.}
+\textbf{Maestro | Mobile Knowledge Tracing}\hfill {\small 2026}\\
+{\small Team lead $\cdot$ Model design and Android deployment}
 \begin{itemize}
-\item Proposed diagnosis of small-model memory-management failures using oracle function calls and failure categories.
-\item Developing an experimental scaffold for teacher trajectories and full fine-tuning / LoRA comparisons.
+\item Designed and deployed MobileKT for tracking concept mastery. The team's Android prototype bundled 1.48 MB of ONNX models and measured a 49 ms median latency per full step on a Galaxy Tab S8.
 \end{itemize}
-\vspace{3pt}
-\section{Technical experience}
-\textbf{Model development:} Python $\cdot$ PyTorch $\cdot$ model training and evaluation\\
-\textbf{Deployment \& systems:} C++ $\cdot$ ONNX $\cdot$ Linux $\cdot$ asynchronous inference pipelines\\
-\textbf{Research environments:} LIBERO $\cdot$ SO-101 $\cdot$ mobile and edge devices\\
+\textbf{Edge AI Video Processing}\hfill {\small 2025 program}\\
+{\small National NPU AX demonstration project}
+\begin{itemize}
+\item Developed a C++ RTSP video pipeline with asynchronous object detection and recording on RK3588 and DEEPX DX-M1; worked on model conversion and inference validation.
+\end{itemize}
+\section{Patent and honors}
+\textbf{Object Tracking Device} $\cdot$ KR 10-3024516, sole inventor \hfill 2026\\
+\textbf{National Scholarship for Science and Engineering} $\cdot$ Korea Student Aid Foundation\\
+\textbf{AAAI Honorable Mention (team), Intel ISEF} \hfill 2019\\
+\section{Technical skills}
+Python, PyTorch, C++, ONNX Runtime, Linux $\cdot$ LIBERO, SO-101, vLLM/Letta, embedded NPU deployment
 \end{document}

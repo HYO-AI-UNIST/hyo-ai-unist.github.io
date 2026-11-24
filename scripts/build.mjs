@@ -5,8 +5,10 @@ import {fileURLToPath} from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const profile = JSON.parse(fs.readFileSync(path.join(root, 'content/profile.json'), 'utf8'));
 const projects = JSON.parse(fs.readFileSync(path.join(root, 'content/projects.json'), 'utf8'));
+const cv = JSON.parse(fs.readFileSync(path.join(root, 'content/cv.json'), 'utf8'));
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const month = new Date(profile.updated + 'T12:00:00Z').toLocaleDateString('en-US', {month:'long',year:'numeric',timeZone:'UTC'});
+const cvMonth = new Date(cv.updated + 'T12:00:00Z').toLocaleDateString('en-US', {month:'long',year:'numeric',timeZone:'UTC'});
 const write = (file, text) => { const target=path.join(root,file); fs.mkdirSync(path.dirname(target),{recursive:true}); fs.writeFileSync(target,text); };
 const href = url => {
   if (!/^(https:\/\/|mailto:|\/?[A-Za-z0-9#_.-])/.test(url) || /[<>"']/.test(url)) throw new Error('Invalid URL: ' + url);
@@ -28,7 +30,7 @@ function shell({title, description=profile.bio, body, prefix='', canonical='', c
 <header class="nav"><a class="brand" href="${home}" aria-label="Hyogi Kim home"><span aria-hidden="true">hk</span>Hyogi Kim</a>
 <nav class="navlinks" aria-label="Main navigation"><a href="${home}#about">About</a><a href="${home}#research">Research</a><a class="contact-nav" href="${home}#contact">Contact</a><a class="cvlink" href="${prefix}cv.html"${current==='cv'?' aria-current="page"':''}>CV ↗</a></nav></header>
 ${body}
-<footer class="footer"><span>© ${profile.updated.slice(0,4)} ${esc(profile.name)} · ${esc(profile.affiliation)}</span><span>Updated ${esc(month)} &nbsp;·&nbsp; <a href="${href(profile.github)}">GitHub ↗</a></span></footer>
+<footer class="footer"><span>© ${profile.updated.slice(0,4)} ${esc(profile.name)} · ${esc(profile.affiliation)}</span><span>Updated ${esc(current==='cv' ? cvMonth : month)} &nbsp;·&nbsp; <a href="${href(profile.github)}">GitHub ↗</a></span></footer>
 </div></body></html>\n`;
 }
 
@@ -41,10 +43,14 @@ const expected = new Set(projects.map(p=>p.id+'.html'));
 for(const file of fs.readdirSync(path.join(root,'projects'))) if(file.endsWith('.html') && !expected.has(file)) fs.unlinkSync(path.join(root,'projects',file));
 for(const p of projects) write('projects/'+p.id+'.html',shell({title:p.title+' — '+profile.name,description:p.summary,prefix:'../',canonical:'projects/'+p.id+'.html',body:`<main id="main" class="detail"><a class="back" href="../#research">← All selected work</a><div><span class="status">${esc(p.status)}</span><h1>${esc(p.title)}</h1><p class="subtitle">${esc(p.subtitle)}</p><div class="tags">${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div><p class="role"><strong>My role</strong> &nbsp; ${esc(p.role)}</p></div><p class="question">${esc(p.question)}</p>${p.sections.map(s=>`<section><h2>${esc(s.title)}</h2>${s.text?`<p>${esc(s.text)}</p>`:''}${s.items?`<ul>${s.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}</section>`).join('')}${p.code?`<a class="button" href="${href(p.code)}">View code on GitHub ↗</a>`:''}<section><a class="read" href="../#research">← Back to selected work</a></section></main>`}));
 
-write('cv.html',shell({title:'CV — '+profile.name,current:'cv',canonical:'cv.html',body:`<main id="main" class="detail"><a class="back" href="./">← Back to home</a><div class="cv-header"><div><p class="eyebrow">Curriculum vitae</p><h1>${esc(profile.name)}</h1><p class="subtitle">${esc(profile.affiliation)} · ${esc(profile.field)}</p><p><a href="mailto:${esc(profile.email)}">${esc(profile.email)}</a> &nbsp;·&nbsp; <a href="${href(profile.github)}">GitHub</a></p></div><div class="cv-actions"><a class="button" href="assets/Hyogi_Kim_CV.pdf">Download PDF ↗</a><button class="button secondary" id="print-cv" type="button">Print</button></div></div><section class="cv-section"><h2>Research interests</h2><p>${esc(profile.interests.join(' · '))}</p><p>${esc(profile.bio)}</p></section><section class="cv-section"><h2>Education</h2><div class="cv-entry"><h3>${esc(profile.affiliation)}</h3><p>${esc(profile.field)}</p></div></section><section class="cv-section"><h2>Selected research & project experience</h2>${projects.map(p=>`<article class="cv-entry"><h3><a href="projects/${p.id}.html">${esc(p.title)}</a></h3><p class="small">${esc(p.status)} · ${esc(p.role)}</p><ul>${p.cv.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></article>`).join('')}</section><section class="cv-section"><h2>Technical experience</h2>${profile.skills.map(s=>`<p><strong>${esc(s.label)}:</strong> ${esc(s.text)}</p>`).join('')}</section><p class="small">Updated ${esc(month)}</p></main><script src="assets/cv.js" defer></script>`}));
+write('cv.html',shell({title:'CV — '+profile.name,current:'cv',canonical:'cv.html',description:cv.interests,body:`<main id="main" class="detail"><a class="back" href="./">← Back to home</a><div class="cv-header"><div><p class="eyebrow">Curriculum vitae</p><h1>${esc(profile.name)}</h1><p class="subtitle">${esc(profile.affiliation)} · ${esc(profile.field)}</p><p><a href="mailto:${esc(profile.email)}">${esc(profile.email)}</a> &nbsp;·&nbsp; <a href="${href(profile.github)}">GitHub</a></p></div><div class="cv-actions"><a class="button" href="assets/Hyogi_Kim_CV.pdf">Download PDF ↗</a><button class="button secondary" id="print-cv" type="button">Print</button></div></div><section class="cv-section"><h2>Education</h2><div class="cv-entry"><h3>${esc(cv.institution)}</h3><p>${esc(cv.education)} · ${esc(cv.location)}</p></div></section>
+<section class="cv-section"><h2>Research interests</h2><p>${esc(cv.interests)}</p></section>
+<section class="cv-section"><h2>Selected research and projects</h2>${cv.projects.map(p=>`<article class="cv-entry"><h3>${p.url ? `<a href="${href(p.url)}">${esc(p.title)}</a>` : esc(p.title)}</h3><p class="small">${esc(p.role)} · ${esc(p.date)}${p.report ? ` · <a href="${href(p.report)}">Technical report ↗</a>` : ''}</p><ul>${p.cv.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></article>`).join('')}</section>
+<section class="cv-section"><h2>Patent and honors</h2><ul>${cv.honors.map(h=>`<li><strong>${esc(h.title)}</strong>${h.detail ? ' · '+esc(h.detail) : ''}${h.date ? ' · '+esc(h.date) : ''}</li>`).join('')}</ul></section>
+<section class="cv-section"><h2>Technical skills</h2><p>${esc(cv.skills)}</p></section><p class="small">Updated ${esc(cvMonth)}</p></main><script src="assets/cv.js" defer></script>`}));
 write('404.html',shell({title:'Page not found — '+profile.name,body:'<main id="main" class="error-page"><p class="eyebrow">404</p><h1>This page has moved.</h1><p><a href="/">Return to Hyogi Kim’s homepage →</a></p></main>'}));
 write('robots.txt',`User-agent: *\nAllow: /\nSitemap: ${profile.url}/sitemap.xml\n`);
-write('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${['','cv.html',...projects.map(p=>'projects/'+p.id+'.html')].map(p=>`<url><loc>${esc(profile.url+'/'+p)}</loc><lastmod>${profile.updated}</lastmod></url>`).join('')}</urlset>\n`);
+write('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${['','cv.html',...projects.map(p=>'projects/'+p.id+'.html')].map(p=>`<url><loc>${esc(profile.url+'/'+p)}</loc><lastmod>${p==='cv.html' ? cv.updated : profile.updated}</lastmod></url>`).join('')}</urlset>\n`);
 
 const tex = value => String(value).replace(/[&%$#_{}]/g,c=>'\\'+c).replace(/·/g,'$\\cdot$').replace(/[–—]/g,'--').replace(/[‘’]/g,"'").replace(/[“”]/g,'"');
 write('cv/Hyogi_Kim_CV.tex',String.raw`\documentclass[10pt,a4paper]{article}
@@ -62,27 +68,27 @@ write('cv/Hyogi_Kim_CV.tex',String.raw`\documentclass[10pt,a4paper]{article}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{4pt}
 \titleformat{\section}{\large\color{accent}}{}{0em}{}[\titlerule]
-\titlespacing*{\section}{0pt}{13pt}{6pt}
-\setlist[itemize]{leftmargin=14pt,itemsep=2pt,topsep=3pt,parsep=0pt}
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+\setlist[itemize]{leftmargin=14pt,itemsep=1pt,topsep=2pt,parsep=0pt}
 \begin{document}
-{\Huge ${tex(profile.name)}}\hfill {\small Updated ${tex(month)}}\\[5pt]
+{\Huge ${tex(profile.name)}}\hfill {\small Updated ${tex(cvMonth)}}\\[5pt]
 ${tex(profile.affiliation)} $\cdot$ ${tex(profile.field)}\\
 \href{mailto:${profile.email}}{${tex(profile.email)}} $\cdot$ \href{${profile.github}}{GitHub} $\cdot$ \href{${profile.url}}{${tex(profile.url.replace('https://',''))}}
-\section{Research interests}
-${tex(profile.interests.join(' · '))}\\
-${tex(profile.bio)}
 \section{Education}
-\textbf{${tex(profile.affiliation)}}\\
-${tex(profile.field)}
-\section{Selected research \& project experience}
-${projects.map(p=>String.raw`\textbf{${tex(p.title)}}\hfill {\small ${tex(p.status)}}\\
-{\small ${tex(p.role)}}
+\textbf{${tex(cv.institution)}}\\
+${tex(cv.education)} \hfill ${tex(cv.location)}
+\section{Research interests}
+${tex(cv.interests)}
+\section{Selected research and projects}
+${cv.projects.map(p=>String.raw`\textbf{${tex(p.title)}}\hfill {\small ${tex(p.date)}}\\
+{\small ${tex(p.role)}${p.report ? String.raw` $\cdot$ \href{${p.report}}{Technical report}` : ''}}
 \begin{itemize}
 ${p.cv.map(x=>'\\item '+tex(x)).join('\n')}
-\end{itemize}
-\vspace{3pt}`).join('\n')}
-\section{Technical experience}
-${profile.skills.map(s=>String.raw`\textbf{${tex(s.label)}:} ${tex(s.text)}\\`).join('\n')}
+\end{itemize}`).join('\n')}
+\section{Patent and honors}
+${cv.honors.map(h=>String.raw`\textbf{${tex(h.title)}}${h.detail ? ' $\\cdot$ '+tex(h.detail) : ''}${h.date ? ' \\hfill '+tex(h.date) : ''}\\`).join('\n')}
+\section{Technical skills}
+${tex(cv.skills)}
 \end{document}
 `);
 console.log(`Built homepage, CV, ${projects.length} project pages, and PDF source.`);
