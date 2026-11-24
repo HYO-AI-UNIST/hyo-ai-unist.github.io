@@ -36,10 +36,10 @@
     {
       "title": "Maestro | Mobile Knowledge Tracing",
       "date": "2026",
-      "role": "Team lead · Model design and Android deployment",
+      "role": "Team lead · MobileKT methodology and evaluation support",
       "url": "projects/maestro.html",
       "cv": [
-        "Designed and deployed MobileKT for tracking concept mastery. The team’s Android prototype bundled 1.48 MB of ONNX models and measured a 49 ms median latency per full step on a Galaxy Tab S8."
+        "Contributed to MobileKT methodology and provided the Android test environment. The team’s prototype bundled 1.48 MB of ONNX models and recorded a 49 ms median step latency on a Galaxy Tab S8."
       ]
     },
     {
